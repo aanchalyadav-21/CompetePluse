@@ -1,0 +1,1 @@
+const SAMPLE_COMPETITIONS = [];

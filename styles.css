@@ -1,0 +1,265 @@
+/* CompetePulse - Contextual UI & Proactive Storytelling Design System */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+/* ==========================================================================
+   THEME VARIABLES & DESIGN TOKENS
+   ========================================================================== */
+
+/* Theme 1: MIDNIGHT REFLECTION MODE (Calm Dark Luxury) */
+.theme-midnight {
+    --bg-main: #070a12;
+    --bg-surface: #0e1322;
+    --bg-card: rgba(16, 24, 42, 0.75);
+    --bg-card-hover: rgba(22, 33, 58, 0.9);
+    --bg-input: #0a0e19;
+    --bg-header: rgba(7, 10, 18, 0.85);
+    --bg-sidebar: rgba(12, 17, 30, 0.95);
+    --bg-spotlight: linear-gradient(135deg, rgba(30, 27, 75, 0.7), rgba(15, 23, 42, 0.9));
+    --bg-banner: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #172554 100%);
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(99, 102, 241, 0.4);
+    --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+
+    --accent-primary: #6366f1;
+    --accent-primary-hover: #4f46e5;
+    --accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+
+    --story-card-bg: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(139, 92, 246, 0.1) 100%);
+    --story-card-border: rgba(99, 102, 241, 0.3);
+}
+
+/* Theme 2: DAYBREAK CLARITY MODE (Energizing Light Modern SaaS) */
+.theme-daybreak {
+    --bg-main: #f4f6fb;
+    --bg-surface: #ffffff;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f8fafc;
+    --bg-input: #f1f5f9;
+    --bg-header: rgba(244, 246, 251, 0.85);
+    --bg-sidebar: #ffffff;
+    --bg-spotlight: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+    --bg-banner: linear-gradient(135deg, #4338ca 0%, #6366f1 50%, #3b82f6 100%);
+
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+
+    --border-color: rgba(226, 232, 240, 0.9);
+    --border-hover: rgba(99, 102, 241, 0.5);
+    --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+
+    --accent-primary: #4f46e5;
+    --accent-primary-hover: #4338ca;
+    --accent-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+
+    --story-card-bg: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
+    --story-card-border: rgba(99, 102, 241, 0.25);
+}
+
+/* Global Font & Body Reset */
+* {
+    box-sizing: border-box;
+    transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--text-muted);
+    border-radius: 9999px;
+    opacity: 0.5;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-primary);
+}
+
+/* Base Utility Overrides for Dynamic Theme support */
+.dynamic-bg-main { background-color: var(--bg-main); }
+.dynamic-bg-surface { background-color: var(--bg-surface); }
+.dynamic-bg-card { background-color: var(--bg-card); }
+.dynamic-text-primary { color: var(--text-primary); }
+.dynamic-text-secondary { color: var(--text-secondary); }
+.dynamic-border { border-color: var(--border-color); }
+
+/* ==========================================================================
+   CARDS & CONTAINERS
+   ========================================================================== */
+
+.glass-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+}
+
+.theme-daybreak .glass-card {
+    backdrop-filter: none;
+}
+
+/* Storytelling Proactive Insight Card */
+.proactive-story-card {
+    background: var(--story-card-bg);
+    border: 1px solid var(--story-card-border);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 30px -10px rgba(99, 102, 241, 0.2);
+}
+
+.proactive-story-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #6366f1, #a855f7, #06b6d4);
+}
+
+/* Contextual Time Indicator Pills */
+.mode-toggle-btn {
+    padding: 0.4rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid var(--border-color);
+    background: var(--bg-input);
+    color: var(--text-secondary);
+}
+
+.mode-toggle-btn.active {
+    background: var(--accent-primary);
+    color: #ffffff !important;
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+}
+
+/* Live Pulse Animation */
+@keyframes pulseGlow {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.6; }
+}
+
+.pulse-dot {
+    animation: pulseGlow 1.8s infinite ease-in-out;
+}
+
+/* Category Filter Button */
+.category-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.75rem;
+    font-size: 0.825rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: transparent;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.category-btn:hover {
+    color: var(--text-primary);
+    background: var(--bg-input);
+}
+
+.category-btn.active {
+    color: var(--text-primary);
+    background: var(--bg-input);
+    border-color: var(--border-hover);
+    font-weight: 600;
+}
+
+/* Urgent Glow */
+.urgent-glow {
+    border-color: rgba(244, 63, 94, 0.5) !important;
+    box-shadow: 0 0 20px rgba(244, 63, 94, 0.25) !important;
+}
+
+/* Calendar Styling */
+.calendar-day-cell {
+    min-height: 100px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 0.6rem;
+    transition: all 0.2s ease;
+}
+
+.calendar-day-cell:hover {
+    border-color: var(--border-hover);
+}
+
+.calendar-day-cell.other-month {
+    opacity: 0.3;
+}
+
+.calendar-day-cell.today {
+    border: 2px solid var(--accent-primary);
+}
+
+.cal-event-pill {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+
+.cal-event-pill:hover {
+    transform: scale(1.02);
+}
+
+/* Drag and Drop Hover in Kanban */
+.kanban-column.drag-over {
+    border-color: var(--accent-primary) !important;
+    background: var(--bg-card-hover) !important;
+}
+
+/* Shimmer Progress */
+@keyframes shimmerAnim {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.shimmer-bar {
+    background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+    background-size: 200% 100%;
+    animation: shimmerAnim 3s infinite linear;
+}

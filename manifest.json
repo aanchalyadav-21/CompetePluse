@@ -1,0 +1,15 @@
+{
+  "name": "CompetePulse",
+  "short_name": "CompetePulse",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#060913",
+  "theme_color": "#4f46e5",
+  "icons": [
+    {
+      "src": "watermarked_img_2684804424754179128.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png"
+    }
+  ]
+}
